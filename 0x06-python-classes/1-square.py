@@ -10,7 +10,7 @@ class Square:
         """initialize a method
 
         Args:
-            size(int): size of the side of the square
+            size(int): size of the square
 
         Returns: None
         """
