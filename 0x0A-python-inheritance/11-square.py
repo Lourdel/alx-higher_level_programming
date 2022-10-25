@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Subclass Square that inherits methods and attributes from Rectangle"""
 Rectangle = __import__('9-rectangle').Rectangle
 
 
