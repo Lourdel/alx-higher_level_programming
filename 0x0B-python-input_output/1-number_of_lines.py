@@ -14,6 +14,7 @@ def number_of_lines(filename=""):
         Exception: when the file can be opened
 
     """
+
     n_lines = 0
     with open(filename, 'r', encoding="utf-8") as f:
         for line in f:
