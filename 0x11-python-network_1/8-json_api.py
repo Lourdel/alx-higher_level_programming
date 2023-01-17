@@ -1,27 +1,24 @@
 #!/usr/bin/python3
 """
-Python script that sends a POST request to the URL and
-to an URL with the letter as a parameter
+    Takes in a letter
+    Sends a POST request to http://0.0.0.0:5000/search_user
+        with the letter as a parameter.
 """
-import requests
-import sys
 
+import requests
+from sys import argv
 
 if __name__ == "__main__":
-    data = {'q': ""}
-
+    url = 'http://0.0.0.0:5000/search_user'
+    q = ""
+    if len(argv) > 1:
+        q = argv[1]
+    r = requests.post(url, data={'q': q})
     try:
-        data['q'] = sys.argv[1]
-    except ValueError:
-        pass
-
-    r = requests.post('http://0.0.0.0:5000/search_user', data)
-
-    try:
-        json_o = r.json()
-        if not json_o:
+        json = r.json()
+        if len(json) == 0:
             print("No result")
         else:
-            print("[{}] {}".format(json_o.get('id'), json_o.get('name')))
+            print("[{}] {}".format(json['id'], json['name']))
     except ValueError:
         print("Not a valid JSON")
